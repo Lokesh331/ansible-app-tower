@@ -18,6 +18,7 @@
       - rhel-server-rhui-rhscl-7-rpms
       - rhel-7-server-rhui-extras-rpms
     tower_manage_server: "{{ tower_fqdn }}"
+    tower_manage_install_certs: true
 
   pre_tasks:
     - name: Add tower-cli repo
