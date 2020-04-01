@@ -16,6 +16,7 @@
     tower_manage_aws_rhui_repos:
       - rhel-server-rhui-rhscl-7-rpms
       - rhel-7-server-rhui-extras-rpms
+    tower_manage_fqdn: "{{ inventory_hostname }}"
     tower_manage_server: "https://{{ inventory_hostname }}"
     tower_manage_install_certs: true
 
