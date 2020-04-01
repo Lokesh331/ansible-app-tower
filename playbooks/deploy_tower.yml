@@ -19,6 +19,7 @@
     tower_manage_fqdn: "{{ inventory_hostname }}"
     tower_manage_server: "https://{{ inventory_hostname }}"
     tower_manage_install_certs: true
+    tower_manage_licence: "{{ lookup('file', licence_location) }}"
 
   pre_tasks:
     - name: Add tower-cli repo
