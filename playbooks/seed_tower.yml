@@ -25,3 +25,4 @@
         loop_var: tower_tasks
       vars:
         tower_manage_server: "https://{{ inventory_hostname }}"
+        tower_manage_validate_certs: false
