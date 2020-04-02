@@ -18,8 +18,9 @@
       loop:      # Include  specific task file
         - tower_orgs
         - tower_credential
-        - tower_inventories
         - tower_project
+        - tower_inventories
+        - tower_inventory_source
         - tower_job
       loop_control:
         loop_var: tower_tasks
