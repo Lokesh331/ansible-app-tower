@@ -37,5 +37,5 @@ tower_objects:
           job_type: run
           playbook: "playbooks/sample_playbook.yml"
           project: "ansible-app-tower"
-          inventory: "tower-servers"
+          inventory: "example"
           credential: "server-key"
