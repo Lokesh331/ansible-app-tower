@@ -12,7 +12,7 @@ tower_objects:
     - name: redhat
       description: The main Red Hat organisation
       credential:
-        - "{{ lookup('file', '../../vars/credentials/machine/vars.yml') | from_yaml }}"
+        - "{{ lookup('file', '../../vars/credentials/server-key/vars.yml') | from_yaml }}"
       projects:
         - name: ansible-app-tower
           description: "Project for deploying Tower"
@@ -38,4 +38,4 @@ tower_objects:
           playbook: "playbooks/sample_playbook.yml"
           project: "ansible-app-tower"
           inventory: "tower-servers"
-          credential: "machine"
+          credential: "server-key"
