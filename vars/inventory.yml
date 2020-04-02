@@ -1,5 +1,5 @@
 ---
-tower:
+example:
   hosts:
-    localhost:
-      ansible_connection: local
+    host1.example.com:
+    server1.example.com:

@@ -13,18 +13,6 @@ tower_objects:
       description: The main Red Hat organisation
       credential:
         - "{{ lookup('file', '../../vars/credentials/machine/vars.yml') | from_yaml }}"
-      inventories:
-        - name: tower-servers
-          description: Tower Server Inventory
-      inventory_source:
-        - name: tower-servers
-          inventory: tower-servers
-          source: scm
-          source_project: ansible-app-tower
-          source_path: vars/inventory.yml
-          update_on_launch: true
-          overwrite: true
-          overwrite_vars: true
       projects:
         - name: ansible-app-tower
           description: "Project for deploying Tower"
@@ -32,10 +20,22 @@ tower_objects:
           scm_type: git
           scm_update_on_launch: "yes"
           custom_virtualenv: "{{ tower_manage_tower_default_virtualenv_path }}/Standard_v1.0_2.9"
+      inventories:
+        - name: example
+          description: Example Inventory
+      inventory_source:
+        - name: example-src
+          inventory: example
+          source: scm
+          source_project: ansible-app-tower
+          source_path: vars/inventory.yml
+          update_on_launch: true
+          overwrite: true
+          overwrite_vars: true
       job_templates:
         - name: "Deploy - Tower"
           job_type: run
-          playbook: "playbooks/deploy_tower.yml"
+          playbook: "playbooks/sample_playbook.yml"
           project: "ansible-app-tower"
           inventory: "tower-servers"
           credential: "machine"
