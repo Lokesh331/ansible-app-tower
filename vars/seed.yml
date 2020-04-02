@@ -33,7 +33,7 @@ tower_objects:
           overwrite: true
           overwrite_vars: true
       job_templates:
-        - name: "Deploy - Tower"
+        - name: "Sample Playbook"
           job_type: run
           playbook: "playbooks/sample_playbook.yml"
           project: "ansible-app-tower"
