@@ -1,0 +1,27 @@
+---
+# Playbook to seed Ansible Tower
+- name: Install Tower to VM
+  hosts: tower
+  vars_files:
+    - "../vars/seed.yml"
+  tasks:
+    - name: Create Virtualenv
+      become: true
+      pip:
+        virtualenv: "/var/lib/awx/venv/{{ item.name }}"
+        name: "{{ item.packages }}"
+      with_items: "{{ virtualenvs }}"
+
+    - include_role:
+        name: ansible-tower-manage
+        tasks_from: "{{ tower_tasks }}.yml"
+      loop:      # Include  specific task file
+        - tower_orgs
+        - tower_credential
+        - tower_inventories
+        - tower_project
+        - tower_job_template
+      loop_control:
+        loop_var: tower_tasks
+      vars:
+        tower_manage_server: "https://{{ inventory_hostname }}"
