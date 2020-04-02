@@ -16,6 +16,15 @@ tower_objects:
       inventories:
         - name: localhost
           description: localhost dummy inventory
+      inventory_source:
+        - name: tower-servers
+          inventory: tower-servers
+          source: scm
+          source_project: ansible-app-tower
+          source_path: vars/inventory.yml
+          update_on_launch: true
+          overwrite: true
+          overwrite_vars: true
       projects:
         - name: ansible-app-tower
           description: "Project for deploying Tower"
