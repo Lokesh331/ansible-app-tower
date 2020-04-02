@@ -14,8 +14,8 @@ tower_objects:
       credential:
         - "{{ lookup('file', '../../vars/credentials/machine/vars.yml') | from_yaml }}"
       inventories:
-        - name: localhost
-          description: localhost dummy inventory
+        - name: tower-servers
+          description: Tower Server Inventory
       inventory_source:
         - name: tower-servers
           inventory: tower-servers
@@ -37,5 +37,5 @@ tower_objects:
           job_type: run
           playbook: "playbooks/deploy_tower.yml"
           project: "ansible-app-tower"
-          inventory: "localhost"
+          inventory: "tower-servers"
           credential: "machine"
