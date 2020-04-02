@@ -39,3 +39,4 @@ tower_objects:
           project: "ansible-app-tower"
           inventory: "example"
           credential: "server-key"
+          custom_virtualenv: "{{ tower_manage_tower_default_virtualenv_path }}/Standard_v1.0_2.9"
