@@ -1,4 +1,4 @@
 ---
 - name: ansible-tower-manage
-  src: git@github.com:Tompage1994/ansible-tower-manage.git
+  src: https://github.com/Tompage1994/ansible-tower-manage.git
   scm: git
