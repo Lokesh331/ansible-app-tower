@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: local
+  tasks:
+    - include_role:
+        name: vivid-role-linux-tower-manage
+        tasks_from: "{{awx_tasks}}.yml"
+      loop: "{{ tower_object_types }}"
+      loop_control:
+        loop_var: awx_tasks
+      vars:
+        tower_manage_server: "{{ inventory_hostname }}"
+        tower_manage_validate_certs: false

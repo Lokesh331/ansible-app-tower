@@ -1,0 +1,42 @@
+---
+# This is an example of how a .tower definition would look
+tower_object_types:
+  - tower_orgs
+  - tower_credential
+  - tower_project
+  - tower_inventories
+  - tower_inventory_source
+  - tower_job
+tower_objects:
+  organisations:
+    - name: redhat
+      description: The main Red Hat organisation
+      credential:
+        - "{{ lookup('file', '../../vars/credentials/server-key/vars.yml') | from_yaml }}"
+      projects:
+        - name: ansible-app-tower
+          description: "Project for deploying Tower"
+          scm_url: "https://github.com/Tompage1994/ansible-app-tower.git"
+          scm_type: git
+          scm_update_on_launch: "yes"
+          custom_virtualenv: "{{ tower_manage_tower_default_virtualenv_path }}/Standard_v1.0_2.9"
+      inventories:
+        - name: example
+          description: Example Inventory
+      inventory_source:
+        - name: example-src
+          inventory: example
+          source: scm
+          source_project: ansible-app-tower
+          source_path: vars/inventory.yml
+          update_on_launch: true
+          overwrite: true
+          overwrite_vars: true
+      job_templates:
+        - name: "Sample Playbook"
+          job_type: run
+          playbook: "playbooks/sample_playbook.yml"
+          project: "ansible-app-tower"
+          inventory: "example"
+          credential: "server-key"
+          custom_virtualenv: "{{ tower_manage_tower_default_virtualenv_path }}/Standard_v1.0_2.9"
