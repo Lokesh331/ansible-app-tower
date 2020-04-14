@@ -4,7 +4,7 @@ pipeline {
 
   agent {
     dockerfile {
-      dir pipeliles
+      dir pipelines
       args '-u root'
     }
   }
