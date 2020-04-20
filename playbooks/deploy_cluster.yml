@@ -1,0 +1,27 @@
+---
+- name: Setup Ansible Tower Cluster
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    tower_manage_install_become: true
+    tower_hosts:
+      - "clusternode[1:3].example.com"
+    tower_database: "dbnode.example.com"
+    tower_database_port: "5432"
+    tower_manage_licence: "{{ lookup('file','license.json') }}"
+    tower_manage_server: https://clusternode1.example.com
+    tower_manage_tower_release_version: 3.6.3-1
+    tower_manage_base_packages:
+      - ansible-tower-cli
+      - gcc
+      - rsync
+      - python-devel
+      - krb5-devel
+      - krb5-libs
+      - krb5-workstation
+    tower_manage_aws_rhui_repos:
+      - rhel-server-rhui-rhscl-7-rpms
+      - rhel-7-server-rhui-extras-rpms
+  roles:
+    - ansible-tower-manage
